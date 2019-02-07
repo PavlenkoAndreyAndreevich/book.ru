@@ -7,6 +7,7 @@ use yii\helpers\Url;
 <ul>
     <?php foreach ($authors as $author):?>
         <li>
+            <a class="btn btn-danger" href="<?php echo Url::to(['author/delete', 'id' => $author->id]); ?>">Удалить</a>
             <a href="<?php echo Url::to(['/author/view', 'id' => $author->id]) ?>">
             <?php echo $author->name; ?>
             </a> Книги этого автора:
@@ -17,3 +18,4 @@ use yii\helpers\Url;
         </li>
     <?php endforeach;?>
 </ul>
+<a class="btn btn-primary" href="<?php echo Url::to(['author/create']); ?>">Добавить автора</a>

@@ -8,6 +8,7 @@ use yii\helpers\Url;
 <ul>
     <?php foreach ($books as $book):?>
         <li>
+            <a class="btn btn-danger" href="<?php echo Url::to(['book/delete', 'id' => $book->id]); ?>">Удалить</a>
             <a href="<?php echo Url::to(['/book/view', 'id' => $book->id]) ?>">
             <?php echo $book->title; ?>
             </a>
@@ -15,3 +16,5 @@ use yii\helpers\Url;
         </li>
     <?php endforeach;?>
 </ul>
+
+<a class="btn btn-primary" href="<?php echo Url::to(['book/create']); ?>">Добавить книгу</a>

@@ -39,4 +39,27 @@ class BookController extends Controller
         ]);
     }
 
+    public function actionDelete($id)
+    {
+        $model = Book::findOne($id);
+        $model->delete();
+        Yii::$app->session->setFlash('success', 'Книга удалена');
+        return $this->redirect(['book/index']);
+    }
+
+    public function actionCreate()
+    {
+        $model = new Book();
+
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', 'Сохранено');
+            return $this->redirect(['book/index']);
+        }
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
+    }
+
 }

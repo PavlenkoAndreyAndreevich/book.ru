@@ -15,11 +15,16 @@ class Author extends ActiveRecord
         return [
             [['name'], 'required'],
             [['name'], 'string', 'max' => 15],
-            [['quantity'], 'integer'],
+
 
         ];
     }
     public function getBook(){
         return $this->hasMany(Book::className(), ['author_id'=>'id'])->asArray()->all();
     }
+
+    public function getCountBooks(){
+        return sizeof($this->getBook());
+    }
+
 }
